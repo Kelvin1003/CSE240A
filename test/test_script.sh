@@ -1,6 +1,14 @@
 #! /bin/bash
 
-make ../src
+echo "--------------------------------------------------"
+echo "Begin compiling..."
+cd ../src
+make 
+cd ../test
+echo "Finish compiling."
+
+echo "--------------------------------------------------"
+echo "Start testing..."
 
 test_file_name=$1.txt
 
@@ -13,3 +21,6 @@ do
     bunzip2 -kc ../traces/$test | ../src/predictor --$1 >> $test_file_name
     echo " " >> $test_file_name
 done
+
+echo "Test results are in the file $test_file_name"
+echo "--------------------------------------------------"

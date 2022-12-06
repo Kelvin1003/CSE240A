@@ -1,7 +1,5 @@
 #include "utils.h"
 
-#include "predictor.h"
-
 
 void updateTwoBitsFsmState(uint8_t *curr_state, uint8_t action) {
     if (action == ACTION_ONE) {

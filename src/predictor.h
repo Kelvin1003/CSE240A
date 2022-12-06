@@ -12,6 +12,8 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+#include "utils.h"
+
 //
 // Student Information
 //
@@ -22,19 +24,6 @@ extern const char *email;
 //------------------------------------//
 //      Global Predictor Defines      //
 //------------------------------------//
-// 2-bit FSM
-#define OUTPUT_ZERO 0
-#define OUTPUT_ONE 1
-
-#define ACTION_ZERO OUTPUT_ZERO
-#define ACTION_ONE OUTPUT_ONE
-
-#define STATE_ZERO 0
-#define STATE_ONE 1
-#define STATE_TWO 2
-#define STATE_THREE 3
-
-
 #define NOTTAKEN  OUTPUT_ZERO
 #define TAKEN     OUTPUT_ONE
 
@@ -51,14 +40,23 @@ extern const char *bpName[];
 #define WT  STATE_TWO			// predict T, weak taken
 #define ST  STATE_THREE			// predict T, strong taken
 
-// Chooser
+// Chooser predictor
 #define GLOBAL_PRE OUTPUT_ZERO
 #define LOCAL_PRE  OUTPUT_ONE
 
 #define SG  STATE_ZERO			// using global predictor, strong
 #define WG  STATE_ONE			// using global predictor, weak
-#define WL  STATE_TWO			// predict T, weak taken
-#define SL  STATE_THREE			// predict T, strong taken
+#define WL  STATE_TWO			// using local predictor, weak
+#define SL  STATE_THREE			// using local predictor, strong
+
+// Chooser ght
+#define NOTTAKEN_GHT OUTPUT_ZERO
+#define TAKEN_GHT  OUTPUT_ONE
+
+#define SNG  STATE_ZERO			// using nottaken ght, strong
+#define WNG  STATE_ONE			// using nottaken ght, weak
+#define WTG  STATE_TWO			// using taken ght, weak
+#define STG  STATE_THREE		// using taken ght, strong
 
 //------------------------------------//
 //      Predictor Configuration       //
@@ -66,6 +64,7 @@ extern const char *bpName[];
 extern int ghistoryBits; // Number of bits used for Global History
 extern int lhistoryBits; // Number of bits used for Local History
 extern int pcIndexBits;  // Number of bits used for PC index
+extern int ghtChooserBits; // Number of bits used for GHT chooser
 extern int bpType;       // Branch Prediction Type
 extern int verbose;
 

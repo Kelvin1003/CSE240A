@@ -9,6 +9,7 @@
 #include "predictor.h"
 #include "gshare.h"
 #include "tournament.h"
+#include "custom.h"
 
 //
 // TODO:Student Information
@@ -28,6 +29,7 @@ const char *bpName[4] = { "Static", "Gshare",
 int ghistoryBits; // Number of bits used for Global History
 int lhistoryBits; // Number of bits used for Local History
 int pcIndexBits;  // Number of bits used for PC index
+int ghtChooserBits; // Number of bits used for GHT chooser
 int bpType;       // Branch Prediction Type
 int verbose;
 
@@ -52,8 +54,21 @@ init_predictor()
   //
   //TODO: Initialize Branch Predictor Data Structures
   //
-  initGshare();
-  initTournament();
+  switch (bpType) {
+    case STATIC:
+      break;
+    case GSHARE:
+      initGshare();
+      break;
+    case TOURNAMENT:
+      initTournament();
+      break;
+    case CUSTOM:
+      initCustom();
+      break;
+    default:
+      break;
+  }
 }
 
 // Make a prediction for conditional branch instruction at PC 'pc'
@@ -76,6 +91,7 @@ make_prediction(uint32_t pc)
     case TOURNAMENT:
       return makePredictionTournament(pc);
     case CUSTOM:
+      return makePredictionCustom(pc);
     default:
       break;
   }
@@ -104,6 +120,7 @@ train_predictor(uint32_t pc, uint8_t outcome)
       trainPredictorTournament(pc, outcome);
       break;
     case CUSTOM:
+      trainPredictorCustom(pc, outcome);
       break;
     default:
       break;
@@ -112,6 +129,19 @@ train_predictor(uint32_t pc, uint8_t outcome)
 
 // Free memory
 void finish_predictor() {
-  finishGshare();
-  finishTournament();
+  switch (bpType) {
+    case STATIC:
+      break;
+    case GSHARE:
+      finishGshare();
+      break;
+    case TOURNAMENT:
+      finishTournament();
+      break;
+    case CUSTOM:
+      finishCustom();
+      break;
+    default:
+      break;
+  }
 }

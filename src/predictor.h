@@ -22,8 +22,21 @@ extern const char *email;
 //------------------------------------//
 //      Global Predictor Defines      //
 //------------------------------------//
-#define NOTTAKEN  0
-#define TAKEN     1
+// 2-bit FSM
+#define OUTPUT_ZERO 0
+#define OUTPUT_ONE 1
+
+#define ACTION_ZERO OUTPUT_ZERO
+#define ACTION_ONE OUTPUT_ONE
+
+#define STATE_ZERO 0
+#define STATE_ONE 1
+#define STATE_TWO 2
+#define STATE_THREE 3
+
+
+#define NOTTAKEN  OUTPUT_ZERO
+#define TAKEN     OUTPUT_ONE
 
 // The Different Predictor Types
 #define STATIC      0
@@ -33,10 +46,19 @@ extern const char *email;
 extern const char *bpName[];
 
 // Definitions for 2-bit counters
-#define SN  0			// predict NT, strong not taken
-#define WN  1			// predict NT, weak not taken
-#define WT  2			// predict T, weak taken
-#define ST  3			// predict T, strong taken
+#define SN  STATE_ZERO			// predict NT, strong not taken
+#define WN  STATE_ONE			// predict NT, weak not taken
+#define WT  STATE_TWO			// predict T, weak taken
+#define ST  STATE_THREE			// predict T, strong taken
+
+// Chooser
+#define GLOBAL_PRE OUTPUT_ZERO
+#define LOCAL_PRE  OUTPUT_ONE
+
+#define SG  STATE_ZERO			// using global predictor, strong
+#define WG  STATE_ONE			// using global predictor, weak
+#define WL  STATE_TWO			// predict T, weak taken
+#define SL  STATE_THREE			// predict T, strong taken
 
 //------------------------------------//
 //      Predictor Configuration       //

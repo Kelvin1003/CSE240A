@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include "predictor.h"
 #include "gshare.h"
+#include "tournament.h"
 
 //
 // TODO:Student Information
@@ -52,6 +53,7 @@ init_predictor()
   //TODO: Initialize Branch Predictor Data Structures
   //
   initGshare();
+  initTournament();
 }
 
 // Make a prediction for conditional branch instruction at PC 'pc'
@@ -72,6 +74,7 @@ make_prediction(uint32_t pc)
     case GSHARE:
       return makePredictionGshare(pc);
     case TOURNAMENT:
+      return makePredictionTournament(pc);
     case CUSTOM:
     default:
       break;
@@ -98,6 +101,7 @@ train_predictor(uint32_t pc, uint8_t outcome)
       trainPredictorGshare(pc, outcome);
       break;
     case TOURNAMENT:
+      trainPredictorTournament(pc, outcome);
       break;
     case CUSTOM:
       break;
@@ -109,4 +113,5 @@ train_predictor(uint32_t pc, uint8_t outcome)
 // Free memory
 void finish_predictor() {
   finishGshare();
+  finishTournament();
 }

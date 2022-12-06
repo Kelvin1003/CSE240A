@@ -18,23 +18,23 @@ void initGshare() {
     bht = (uint8_t*) malloc(buffer_size);
     memset(bht, WN, buffer_size);
 
-    mask = (1 << ghistoryBits) - 1;
+    mask = getNBitsMask(ghistoryBits);
 }
 
 
 uint8_t makePredictionGshare(uint32_t pc) {
     uint32_t index = (pc ^ bhr) & mask;
 
-    return (bht[index] >= WT) ? TAKEN : NOTTAKEN;
+    return getTwoBitsFsmOutput(bht[index]);
 }
 
 
 void trainPredictorGshare(uint32_t pc, uint8_t outcome) {
     uint32_t index = (pc ^ bhr) & mask;
 
-    twoBitsFsm(bht + index, outcome);
+    updateTwoBitsFsmState(bht + index, outcome);
 
-    bhr = (bhr << 1) + outcome;
+    updateBhr(&bhr, outcome);
 }
 
 

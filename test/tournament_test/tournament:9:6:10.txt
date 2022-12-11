@@ -1,0 +1,32 @@
+tournament:9:6:10.txt
+ 
+Test: fp_1.bz2
+Branches:           1546797
+Incorrect:            18572
+Misprediction Rate:   1.201
+ 
+Test: fp_2.bz2
+Branches:           2422049
+Incorrect:           124393
+Misprediction Rate:   5.136
+ 
+Test: int_1.bz2
+Branches:           3771697
+Incorrect:           568491
+Misprediction Rate:  15.073
+ 
+Test: int_2.bz2
+Branches:           3755315
+Incorrect:            21919
+Misprediction Rate:   0.584
+ 
+Test: mm_1.bz2
+Branches:           3014850
+Incorrect:           297773
+Misprediction Rate:   9.877
+ 
+Test: mm_2.bz2
+Branches:           2563897
+Incorrect:           255250
+Misprediction Rate:   9.956
+ 

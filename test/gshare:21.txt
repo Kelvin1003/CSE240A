@@ -1,0 +1,32 @@
+gshare:21.txt
+ 
+Test: fp_1.bz2
+Branches:           1546797
+Incorrect:            12919
+Misprediction Rate:   0.835
+ 
+Test: fp_2.bz2
+Branches:           2422049
+Incorrect:            27835
+Misprediction Rate:   1.149
+ 
+Test: int_1.bz2
+Branches:           3771697
+Incorrect:           289648
+Misprediction Rate:   7.680
+ 
+Test: int_2.bz2
+Branches:           3755315
+Incorrect:            12078
+Misprediction Rate:   0.322
+ 
+Test: mm_1.bz2
+Branches:           3014850
+Incorrect:            96150
+Misprediction Rate:   3.189
+ 
+Test: mm_2.bz2
+Branches:           2563897
+Incorrect:           150608
+Misprediction Rate:   5.874
+ 

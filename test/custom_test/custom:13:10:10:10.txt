@@ -1,0 +1,32 @@
+custom:13:10:10:10.txt
+ 
+Test: fp_1.bz2
+Branches:           1546797
+Incorrect:            12433
+Misprediction Rate:   0.804
+ 
+Test: fp_2.bz2
+Branches:           2422049
+Incorrect:            40509
+Misprediction Rate:   1.673
+ 
+Test: int_1.bz2
+Branches:           3771697
+Incorrect:           355608
+Misprediction Rate:   9.428
+ 
+Test: int_2.bz2
+Branches:           3755315
+Incorrect:            10033
+Misprediction Rate:   0.267
+ 
+Test: mm_1.bz2
+Branches:           3014850
+Incorrect:            38557
+Misprediction Rate:   1.279
+ 
+Test: mm_2.bz2
+Branches:           2563897
+Incorrect:           169019
+Misprediction Rate:   6.592
+ 
